@@ -1,6 +1,7 @@
 const loginDiv = document.querySelector('.login-form-div')
 const signupDiv = document.querySelector('.signup')
 const userDisplay = document.querySelector('.logged-in-user')
+const signupTitle = document.body.querySelector('.signup-title')
 
 function buildSignUpForm() {
     parentDiv.style.display = 'none'
@@ -105,6 +106,7 @@ function changePageView(user) {
     
     const loginForm = document.getElementById('login-form')
     loginForm.remove()
+    signupTitle.remove()
     signupDiv.style.display = 'none'
     parentDiv.style.display = 'grid'
     userDisplay.style.display = 'block'
