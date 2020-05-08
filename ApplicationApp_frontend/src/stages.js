@@ -110,7 +110,7 @@ function stageForm(object, condition="") { //<--- position will go in the argume
         form.append(title, status, startDate, endDate, submit)
         div.appendChild(form)
         STAGE.appendChild(div)
-
+        
         form.addEventListener('submit', ()=> handleStageSubmit(stage, "edit"))
 
     }
@@ -132,6 +132,7 @@ function handleDeleteStage(stage) {
         card.remove()
         taskListUL.innerHTML = ""
         notesContainerDiv.innerHTML = ""
+        fetchAll(userLink.id)
     })
     
 }

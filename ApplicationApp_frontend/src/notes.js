@@ -54,21 +54,23 @@ function deleteNote(note){
 // builders
 function buildNotes(stage){
     notesContainerDiv.innerHTML = ""
-
+    
     console.log(stage.notes)
+    
     stage.notes.forEach(note => {
-        buildNote(note)
+        buildNote(note, stage)
     })
+    
     newNoteButtonBuilder(stage)
 }
 
-function buildNote(note){
+function buildNote(note, stage){
     let noteDiv = document.createElement("div")
     let editBtn = document.createElement("button")
     let deleteBtn = document.createElement("button")
     editBtn.innerText = "Edit Note"
     deleteBtn.innerText = "Delete Note"
-    editBtn.onclick = ()=> buildNoteForm(note)
+    editBtn.onclick = ()=> buildNoteForm(note, stage, "edit")
     deleteBtn.onclick = ()=> deleteNote(note)
 
     noteDiv.classList.add("note-card")
@@ -81,17 +83,21 @@ function buildNote(note){
     notesContainerDiv.appendChild(noteDiv)
 }
 
-function buildNoteForm(note="", stage=""){
+function buildNoteForm(note="", stage="", condition=""){
 
     // notesContainerDiv.innerHTML = ""
     notesView.innerHTML = ""
     
     let cancelBtn = document.createElement("button")
     cancelBtn.innerText = "Cancel"
-    cancelBtn.onclick = () => buildNotes(stage)
+    cancelBtn.onclick = () => {
+        // notesView.innerHTML = ""
+        buildNotes(stage)
+    } 
 
     let formDiv = document.createElement("div")
-    if (note === ""){
+    
+    if (condition === "new"){
         formDiv.innerHTML = `
         <form id="note-form">
         <h3>Add a New Note</h3>
@@ -180,7 +186,7 @@ function newNoteButtonBuilder(stage){
     let newNoteBtn = document.createElement("button")
     newNoteBtn.innerText = "+"
     newNoteBtn.setAttribute("data-stage-id", stage.id)
-    newNoteBtn.onclick = ()=> buildNoteForm("", stage)
+    newNoteBtn.onclick = ()=> buildNoteForm("", stage, "new")
     notesView.appendChild(newNoteBtn)
 }
 

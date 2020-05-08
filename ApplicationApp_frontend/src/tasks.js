@@ -53,7 +53,9 @@ function buildTaskList(stage){
         toggleTaskForm.innerText = "+"
         // toggleTaskForm.append("Add Task")
         toggleTaskForm.onclick = () => toggleForm()
-        taskDIV.prepend(toggleTaskForm, "Add Task")
+        let div5 = document.body.querySelector(".div5")
+        // taskDIV.prepend(toggleTaskForm, "Add Task")
+        div5.prepend(toggleTaskForm, "Add Task")
     }
 
 }
@@ -62,7 +64,7 @@ function prependTask(task){
     const li = document.createElement("li")
     li.id = `task-${task.id}`
 
-    const title = document.createElement("span")
+    const title = document.createElement("p")
     const details = document.createElement("p")
     const status = document.createElement("p")
     const editTask = document.createElement("button")
@@ -74,6 +76,7 @@ function prependTask(task){
     else {li.classList.add("low")}
 
     title.innerHTML = `<b>${task.title}</b>`
+    title.id = 'task-title'
     details.innerHTML = `Started: ${task.startdate}<br> Due: ${task.duedate} <br>${task.details}`
     status.innerHTML = `<i>Status: ${task.status}</i><br>`
     
@@ -92,7 +95,7 @@ function prependTask(task){
     completeTask.addEventListener("click", handleCompleteTask)
     deleteTask.addEventListener("click", handleDeleteTask)
 
-    li.append(completeTask, editTask, deleteTask, title, details, status)
+    li.append(title, details, status, completeTask, editTask, deleteTask)
     taskListUL.prepend(li)
 }
 

@@ -13,7 +13,24 @@ function collapsePositionMenu(){
 }
 
 
+// for notes bar
+// const row = document.getElementsByClassName("notesCollapsibleView");
+// row[0].addEventListener("click", ()=> collapseNotes())
 
+// function collapseNotes(){
+//         row[0].classList.toggle("active");
+//         const container = row[0].nextElementSibling;
+//         for (noteEle in container.children){
+//             debugger
+//             if (noteEle.style.maxHeight){
+//                 noteEle.style.maxHeight = null;
+//               } else {
+//                 noteEle.style.maxHeight = content.scrollHeight + "px";
+//               }
+//         }
+        
+        
+// }
 // for sidebar
 
 function openPosNav() {

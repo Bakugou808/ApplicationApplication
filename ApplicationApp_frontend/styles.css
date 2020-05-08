@@ -109,7 +109,10 @@ body {
     background-image: url("assets/mochaGrunge.png");
     border-radius: 20px;
     border-style: groove;
+    display: inline;
 }
+
+
 .div4 { 
     grid-area: 3 / 1 / 6 / 5;
     background-color:  rgb(181, 216, 218); 
@@ -140,7 +143,26 @@ body {
     background-image: url("assets/mochaGrunge.png");
     border-radius: 20px;
     border-style: groove;
+
 }
+
+.div5 button{
+  margin: 10px;
+}
+
+.div5 .tasks{
+  margin: 20px;
+  text-align: center
+}
+
+
+.div5 .tasks #task-list-title{
+  display: inline-block;
+  margin: 10px;
+  text-size: 20px;
+}
+
+
 .div6 { 
     grid-area: 3 / 5 / 6 / 6;
     background-color:  rgb(181, 216, 218); 
@@ -228,11 +250,16 @@ body {
     overflow-y: hidden;
     /* overflow-x: auto; */
     white-space: nowrap;
-    border-radius: 20px;
+    border-radius: 40px;
     cursor: pointer;
-
+    max-width: 800px;
+    margin:10px auto;
+    /* margin: 20px; */
+    /* padding-top: 10px; */
 
 }
+
+/* "max-width:800px;margin:10 auto;" */
 
 .scrolling-wrapper div {
     display: inline-block;
@@ -243,6 +270,7 @@ body {
     flex: auto;
     outline-style: inset;
     column-gap: 400px;
+
 
     /* pointer-events: none; */
     /* flex: 0 0 auto; */
@@ -264,9 +292,11 @@ text-align: center;
 padding: 14px;
 padding-top: 15px;
 border-radius: 20px;
-
 } 
 
+#stage-card button{
+  padding-left: 10px;
+}
 
 /* #stage-card p {
   display: inline-block;
@@ -281,7 +311,14 @@ border-radius: 20px;
   display: inline;
 }
 
+.stage-card-view {
+  margin: 20px;
+}
 
+
+.stage-card-view h3{
+  font-size: 29px;
+}
 
 
 #new-task, #edit-task{
@@ -321,8 +358,11 @@ border-radius: 20px;
   row-gap: 1em;
   padding-left: 10px;
   padding-right: 10px;
-
 }
+/* 
+.div5 .tasks .task-list .task-title{
+  padding-top: 15px;
+} */
 
 .high { background-image:url("assets/cubes.png"); border-radius: 20px; 
   /* border-style: solid;
@@ -418,9 +458,22 @@ border-radius: 20px;
 #pos-view-bar{
   font-size: 24px;
   border-radius: inherit;
-  /* width: 9in; */
-  
+  margin: 10px;
 }
+
+#pos-view-bar #pos-view-position{
+  font-size: 35px;
+  padding-top: 22px;
+  padding-left: 25px;
+}
+
+#pos-view-bar #pos-view-company{
+  font-size: 28px;
+  padding-bottom: 22px;
+  padding-left: 25px;
+  padding-top:10px
+}
+
 
 .posCollapsibleView {
   background-color: #eee;
@@ -434,22 +487,27 @@ border-radius: 20px;
   font-size: 15px;
 }
 
+/* .notesCollapsibleView {
+  background-color: inherit; */
+   /* #eee; */
+  /* color: #444;
+  cursor: pointer;
+  width: inherit;
+  border: none;
+  border-radius: inherit;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+} */
+
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active, .posCollapsibleView:hover {
   background-color: #ccc;
 }
 
-/* Style the collapsible content. Note: hidden by default */
-/* .content {
-  padding: 0 18px;
-  display: none;
-  overflow: hidden;
-  background-color: #f1f1f1;
-} */
-
-
 .posContent {
-  padding: 0 18px;
+  /* padding: 0 18px; */
+  margin: 10px;
   background-color: white;
   max-height: 0;
   overflow: hidden;
@@ -457,20 +515,8 @@ border-radius: 20px;
   transition: max-height 0.2s ease-out;
 }
 
-
-/* .posCollapsibleView:after {
-  font-size: 13px;
-  color: white;
-  float: right;
-  margin-left: 5px;
+.posContent div{
+  margin: 20px;
 }
-.active:after {
-  color: orange;
-  background-color: orange;
-} */
 
 
-/* STAGE VIEW DIV */
-.stage-card-view h3{
-  font-size: 29px;
-}

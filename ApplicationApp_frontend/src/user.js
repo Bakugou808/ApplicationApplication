@@ -1,7 +1,6 @@
 const loginDiv = document.querySelector('.login-form-div')
 const signupDiv = document.querySelector('.signup')
 const userDisplay = document.querySelector('.logged-in-user')
-const signupTitle = document.body.querySelector(".signup-title")
 
 function buildSignUpForm() {
     parentDiv.style.display = 'none'
@@ -98,7 +97,6 @@ function logoutUser() {
         userLink.id = ''
         buildLoginForm();
         signupDiv.style.display = 'block'
-        signupTitle.style.display = 'block'
         parentDiv.style.display = 'none'
     })
 }
@@ -108,7 +106,6 @@ function changePageView(user) {
     const loginForm = document.getElementById('login-form')
     loginForm.remove()
     signupDiv.style.display = 'none'
-    signupTitle.style.display = "none"
     parentDiv.style.display = 'grid'
     userDisplay.style.display = 'block'
     userDisplay.innerHTML = `${user.username} <button id='logout-btn'> Logout </button>`

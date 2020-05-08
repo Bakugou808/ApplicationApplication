@@ -32,9 +32,7 @@ const posMenuDiv = document.getElementById("positions-div")
 // user id
 const USER_URL = "http://localhost:3000/users"
 
-// pre "accepted change before upstream" --> not necessary
-// const userId = 1
-// const stageUl = document.getElementById('stage-list')
+
 
 
 // const userId = userLink.id
@@ -42,13 +40,6 @@ const parentDiv = document.body.querySelector('.parent')
 // Analytics
 const graphs = document.body.querySelector(".graphs")
 
-// Biggest Note: everything is contingent on being able to access the User's Id. Figure out how this will be passed along.
-// challenges: edit form will only populate specific input fields and sometimes only up to one or two words....
-// changes: postPosition has become submitPosition and will take in a method as well as a an object of the body key. Will now perform POST or PATCH requests dependent on the method value
-// bugs, change cancel button on new form view, also don't let it save.
-// fetches 
-
-// stageView no longer necessary take out
 
 function fetchAll(userId){
     fetch(`${USER_URL}/${userId}`)
@@ -106,7 +97,7 @@ function submitPosition(positionObj, method=""){
 
 function buildStagesBar(position){
     scrollingWrapper.innerHTML = ""
-    scrollingWrapper.style = "max-width:800px;margin:0 auto;"
+    // scrollingWrapper.style = "max-width:800px;margin:10 auto;"
     scrollingWrapper.addEventListener('wheel', function(e) {
         if (e.deltaY > 0) {scrollingWrapper.scrollLeft += 100;}
         else {scrollingWrapper.scrollLeft -= 100;}
@@ -183,7 +174,12 @@ function buildLeftColumn(user){
 
 function buildPosView(position){
     
-    posViewMenu.innerHTML = ""
+    if (document.getElementById("pos-view-position") && document.getElementById("pos-view-company")
+    ){
+        document.getElementById("pos-view-position").remove()
+        document.getElementById("pos-view-company").remove()
+    }
+  
     
     let title = document.createElement("h1")
     let company = document.createElement("h3")
@@ -202,7 +198,7 @@ function buildPosView(position){
     let midDiv = document.createElement("div")
     midDiv.id = "pos-details"
 
-    midDiv.setAttribute("hidden", true)
+    
 
     // posView.id = position.id
     company.innerText = position.company
@@ -228,10 +224,17 @@ function buildPosView(position){
     deleteBtn.classList.add("button")
     deleteBtn.onclick = ()=> deletePos(position)
 
-    posViewBar.innerText = `Position: ${title.innerText} \n Company:${company.innerText}`
-    midDiv.append( dates, contact, website, rating, procon, requirements, details)
+    let pPos = document.createElement('div')
+    pPos.id = "pos-view-position"
+    let pComp = document.createElement('div')
+    pComp.id = "pos-view-company"
+    pPos.innerText = position.title 
+    pComp.innerText = position.company
+    posViewBar.append(pPos, pComp)
+    // posViewBar.innerText = `Position: ${title.innerText} \nCompany: ${company.innerText}`
+    midDiv.append(salary, status, editBtn, deleteBtn, dates, contact, website, rating, procon, requirements, details)
 
-    posViewMenu.append(salary, status, editBtn, deleteBtn, dates, contact, website, rating, procon, requirements, details)
+    posViewMenu.append(midDiv)
 
 
     // addStageBtn.innerText = 'Add Stage'
@@ -529,13 +532,6 @@ function posForm(position=""){
       </form>`
     }
 
-        // <input
-        //     type="text"
-        //     name="rating"
-        //     value="${position.rating}"
-        //     placeholder="Rating"
-        //     class="input-text"
-        // />
 
     // ---> switch back to input --> set a standard width and height -> if they go beyond the size have an overflow scroll property .
 
@@ -633,30 +629,3 @@ function showDetails(){
     let detailDiv = document.querySelector("#pos-details")
     detailDiv.toggleAttribute("hidden")
 }
-
-// invoke functions
-// buttonBuilders()
-// fetchAll(userId)
-
-
-// some epigraph ideas
-// https://www.pinterest.com/pin/30610472451642536/
-// https://www.pinterest.com/pin/30610472451675177/
-// https://www.pinterest.com/pin/30610472451678453/
-// function() {
-//     function scrollHorizontally(e) {
-//         e = window.event || e;
-//         const delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
-//         document.getElementById('scrolling-wrapper').scrollLeft -= (delta*40); // Multiplied by 40
-//         e.preventDefault();
-//     }
-//     if (document.getElementById('scrolling-wrapper').addEventListener) {
-//         // IE9, Chrome, Safari, Opera
-//         document.getElementById('scrolling-wrapper').addEventListener("mousewheel", scrollHorizontally, false);
-//         // Firefox
-//         document.getElementById('scrolling-wrapper').addEventListener("DOMMouseScroll", scrollHorizontally, false);
-//     } else {
-//         // IE 6/7/8
-//         document.getElementById('scrolling-wrapper').attachEvent("onmousewheel", scrollHorizontally);
-//     }
-// };
