@@ -4,6 +4,14 @@
   border-radius: 10px;
 }
 
+.login-form-div{
+  margin: 10px;
+}
+
+.logged-in-user{
+  margin: 10px;
+}
+
 .signup, .signup-title {
   /* padding-top: 15px; */
   align-items: center;
